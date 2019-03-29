@@ -13,14 +13,13 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.example.architectureapp.BuildConfig
 import com.example.architectureapp.R
 import com.example.architectureapp.adapter.MyAdapter
 import com.example.architectureapp.base.BaseVH
 import com.example.architectureapp.data.room.Weather
 import com.example.architectureapp.utilities.InjectorUtils
 import com.example.architectureapp.utilities.ioThread
-import com.example.dell.weatherappkotlin.api.Get_Retrofit
+import com.example.dell.weatherappkotlin.api.GetRetrofit
 import com.example.dell.weatherappkotlin.api.mWeatherApiInterface
 import com.example.dell.weatherappkotlin.model.root
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,8 +27,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity(),BaseVH.onclick {
     lateinit var myAdapter: MyAdapter
@@ -66,7 +63,7 @@ class MainActivity : AppCompatActivity(),BaseVH.onclick {
 
 
     private fun getFromAPI()  {
-        api = Get_Retrofit.getRetrofit().
+        api = GetRetrofit.getRetrofit().
             create(mWeatherApiInterface::class.java)
         var weatherInfo=api.getweatherinfo(16.871311,96.199379)
         weatherInfo.enqueue(object : Callback<root> {

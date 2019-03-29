@@ -6,7 +6,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class Get_Retrofit {
+class GetRetrofit {
     companion object {
         fun getRetrofit(): Retrofit {
             val client = OkHttpClient.Builder()
